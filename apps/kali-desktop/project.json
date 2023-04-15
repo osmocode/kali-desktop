@@ -1,0 +1,109 @@
+{
+  "name": "kali-desktop",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "kali",
+  "sourceRoot": "apps/kali-desktop/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/kali-desktop",
+        "index": "apps/kali-desktop/src/index.html",
+        "main": "apps/kali-desktop/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/kali-desktop/tsconfig.app.json",
+        "assets": [
+          "apps/kali-desktop/src/favicon.ico",
+          "apps/kali-desktop/src/assets"
+        ],
+        "styles": [
+          "apps/kali-desktop/src/styles.less",
+          "node_modules/xterm/css/xterm.css"
+        ],
+        "scripts": [
+          "node_modules/xterm/lib/xterm.js"
+        ],
+        "allowedCommonJsDependencies": [
+          "xterm"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "kali-desktop:build:production"
+        },
+        "development": {
+          "browserTarget": "kali-desktop:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "kali-desktop:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/kali-desktop/**/*.ts",
+          "apps/kali-desktop/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/kali-desktop/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/web:file-server",
+      "options": {
+        "buildTarget": "kali-desktop:build"
+      }
+    }
+  }
+}

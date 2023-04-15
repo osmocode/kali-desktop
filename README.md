@@ -1,2 +1,3 @@
-# kalilinux-desktop
+# Kali Desktop
+
 Web application for embedded docker kalilinux
