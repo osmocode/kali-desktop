@@ -1,3 +1,22 @@
-<h1>Hello</h1>
-
-<kali-terminal></kali-terminal>
+<nz-layout>
+  <nz-sider nzCollapsible nzWidth="200px">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item routerLink="/dashboard" nzMatchRouter="/dashboard">
+        <i nz-icon nzType="desktop" nzTheme="outline"></i>
+        <span>Dashboard</span>
+      </li>
+      <li nz-menu-item routerLink="/nmap" nzMatchRouter="/nmap">
+        <i nz-icon nzType="eye" nzTheme="outline"></i>
+        <span>Nmap</span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

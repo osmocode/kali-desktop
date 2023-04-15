@@ -17,7 +17,12 @@
         "tsConfig": "apps/kali-desktop/tsconfig.app.json",
         "assets": [
           "apps/kali-desktop/src/favicon.ico",
-          "apps/kali-desktop/src/assets"
+          "apps/kali-desktop/src/assets",
+          {
+            "glob": "**/*",
+            "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+            "output": "/assets/"
+          }
         ],
         "styles": [
           "apps/kali-desktop/src/styles.less",
