@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'kali-nmap',
+    selector: 'app-nmap',
     templateUrl: './nmap.component.html',
     styleUrls: ['./nmap.component.less'],
 })
